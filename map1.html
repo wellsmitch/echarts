@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="echarts-map/js/echarts.js"></script>
+    <script src="echarts-map/js/jquery.js"></script>
+</head>
+<body>
+<div id="main" style="width: 500px;height: 500px;border: 1px salmon solid;"></div>
+<script>
+    var chart = echarts.init(document.getElementById('main'));
+    $.get('echarts-mapJson/geometryCouties/411200.json', function (chinaJson) {
+    // $.get('echarts-map/json/province/henan.json', function (chinaJson) {
+        echarts.registerMap('henan', chinaJson);
+        var chart = echarts.init(document.getElementById('main'));
+        chart.setOption({
+            series: [{
+                type: 'map',
+                map: 'henan'
+            }]
+        });
+    });
+</script>
+</body>
+</html>
